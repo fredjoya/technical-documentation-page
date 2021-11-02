@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description"
+        content="Technical documentation page created for the FreeCodeCamp's Responsive Web Design Certification.">
+    <title>Getting started with React</title>
+
+</head>
+
+
+
+<body>
+    <nav id="navbar">
+        <header>React</header>
+        <ul>
+            <li><a class="nav-link" href="#Introduction">Introduction</a></li>
+            <li>
+                <a class="nav-link" href="#What_you_should_already_know">What you should already know</a>
+            </li>
+            <li><a class="nav-link" href="#setUp">Setting up your React App</a></li>
+            <li><a class="nav-link" href="#initYourApp">Initializing your app</a></li>
+            <li>
+                <a class="nav-link" href="#exploreReact">Exploring our first React Component</a>
+            </li>
+            <li><a class="nav-link" href="#importStatements">Import Statements</a></li>
+            <li><a class="nav-link" href="#appComp">The App Component</a></li>
+            <li><a class="nav-link" href="#exportStatements">Export Statements</a></li>
+            <li>
+                <a class="nav-link" href="#compProps">Component Props</a>
+            </li>
+            <li><a class="nav-link" href="#Summary">Summary</a></li>
+        </ul>
+    </nav>
+    <main id="main-doc">
+
+        <section class="main-section" id="Introduction">
+            <header>Introduction</header>
+            <article>
+                <p>React is a library for building user interfaces. React is not a framework – it's not even exclusive
+                    to the web. It's
+                    used with other libraries to render to certain environments. For instance, React Native can be used
+                    to build mobile
+                    applications.</p>
+                <p>React's primary goal is to minimize the bugs that occur when developers are building UIs. It does
+                    this through the use
+                    of components — self-contained, logical pieces of code that describe a portion of the user
+                    interface. These components
+                    can be composed together to create a full UI, and React abstracts away much of the rendering work,
+                    leaving you to
+                    concentrate on the UI design.</p>
+            </article>
+        </section>
+
+        <section class="main-section" id="What_you_should_already_know">
+            <header>What you should already know</header>
+            <article>
+                <p>This guide assumes you have the following basic background:</p>
+                <ul>
+                    <li>Basic familiarity with using computers.</li>
+                    <li>A general understanding of the Internet and the World Wide Web (WWW).</li>
+                    <li>A basic understanding of creating and managing files.</li>
+                    <li>Familiarity with the core HTML, CSS, and JavaScript languages, knowledge of the terminal/command
+                        line.</li>
+                </ul>
+            </article>
+        </section>
+
+        <section class="main-section" id="setUp">
+            <header>Setting up your first React app</header>
+            <article>
+                <p>
+                    In order to use create-react-app, you need to have Node.js installed. It's recommended that you use
+                    the long-term support
+                    (LTS) version. Node includes npm (the node package manager), and npx (the node package runner).
+                </p>
+            </article>
+        </section>
+
+        <section class="main-section" id="initYourApp">
+            <header>Initializing your app</header>
+            <article>
+                <p>create-react-app takes one argument: the name you'd like to give your app. create-react-app uses this name to make a new
+                directory, then creates the necessary files inside it. Make sure you cd to the place you'd like your app to live on your
+                hard drive, then run the following in your terminal:
+                </p>
+                <code>npx create-react-app moz-todo-react --use-npm</code>
+               <p>
+                When the process is complete, cd into the moz-todo-react directory and run the command npm start. The scripts installed
+                by create-react-app will start being served at a local server at localhost:3000, and open the app in a new browser tab.
+                Your browser will display something like this:
+               </p>
+               <p>
+                   <img src="images/defaultReactPic.png" alt="default react pic">
+               </p>
+            </article>
+        </section>
+
+        <section class="main-section" id="exploreReact">
+            <header>Exploring our first React component</header>
+            <article>
+                <p>In React, a <strong>component</strong> is a reusable module that renders a part of our app. These parts can be big or small, but they are
+                usually clearly defined: they serve a single, obvious purpose.
+                </p>
+                <p>
+                    Let's open src/App.js, since our browser is prompting us to edit it. This file contains our first component, App, and a
+                    few other lines of code:
+                </p>
+                <code>
+                import React from 'react';
+                import logo from './logo.svg';
+                import './App.css';
+                
+                function App() {
+                return (
+                &lt;div className="App"&gt;
+                    &lt;header className="App-header"&gt;
+                        &lt;img src={logo} className="App-logo" alt="logo" /&gt;
+                        &lt;p&gt;
+                            Edit &lt;code&gt;src/App.js&lt;/code&gt;and save to reload.
+                        &lt;/p&gt;
+                        &lt;a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer"&gt;
+                            Learn React
+                        &lt;/a&gt;
+                    &lt;/header&gt;
+                &lt;/div&gt;
+                );
+                }
+                export default App;
+                </code>
+
+                <p>The App.js file consists of three main parts: some import statements at the top, the App component in the middle, and an
+                export statement at the bottom. Most React components follow this pattern.
+                </p>
+            </article>
+        </section>
+
+        <section class="main-section" id="importStatements">
+            <header>Import statements</header>
+            <article>
+                <p>The import statements at the top of the file allow App.js to use code that has been defined elsewhere. Let's look at
+                these statements more closely.
+                </p>
+                <code>
+                import React from 'react';
+                import logo from './logo.svg';
+                import './App.css';
+                </code>
+                <p>
+                    The first statement imports the React library itself. Because React turns the JSX we write into React.createElement(),
+                    all React components must import the React module. If you skip this step, your application will produce an error.
+                </p>
+                <p>
+                    The second statement imports a logo from './logo.svg'. Note the use of ./ at the beginning of the path, and the .svg
+                extension at the end — these tell us that the file is local and that it is not a JavaScript file. Indeed, the logo.svg
+                file lives in our source directory.
+                </p>
+                <p>
+                    We don't write a path or extension when importing the React module — this is not a local file; instead, it is listed as a dependency in our package.json file. Be careful of this distinction as you work through this lesson!
+                </p>
+                <p>
+                    The third statement imports the CSS related to our App component. Note that there is no variable name and no from
+                    directive. This particular import syntax is not native to JavaScript module syntax — it comes from Webpack, the tool
+                    create-react-app uses to bundle all our JavaScript files together and serve them to the browser.
+                </p>
+            </article>
+        </section>
+
+        <section class="main-section" id="appComp">
+            <header>The App Component</header>
+            <article>
+                <p>After the imports, we have a function named App. Whereas most of the JavaScript community prefers camel-case names like
+                helloWorld, React components use pascal-case variable names, like HelloWorld, to make it clear that a given JSX element
+                is a React component, and not a regular HTML tag. If you were to rename the App function to app, your browser would show
+                you an error.
+                </p>
+                <p>
+                    Let's look at App more closely.
+                </p>
+                <code>
+                    function App() {
+                    return (
+                    &lt;div className="App"&gt;
+                        &lt;header className="App-header"&gt;
+                            &lt;img src={logo} className="App-logo" alt="logo" /&gt;
+                            &lt;p&gt;
+                                Edit &lt;code&gt;src/App.js&lt;/code&gt; and save to reload.
+                            &lt;/p&gt;
+                            &lt;a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer"&gt;
+                                Learn React
+                            &lt;/a>
+                        &lt;/header>
+                    &lt;/div>
+                    );
+                    }
+                </code>
+                <p>
+                    The App function returns a JSX expression. This expression defines what your browser ultimately renders to the DOM.
+                </p>
+            </article>
+        </section>
+
+        <section class="main-section" id="exportStatements">
+            <header>Export statements</header>
+            <article>
+                <p>At the very bottom of the App.js file, the statement export default App makes our App component available to other
+                modules.
+                </p>
+            </article>
+        </section>
+
+        <section class="main-section" id="compProps">
+            <header>Component props</header>
+            <article>
+                <p>
+                    A <strong>prop</strong> is any data passed into a React component. React props are comparable to HTML attributes. Where HTML elements
+                    have attributes, React components have props. Props are written inside component calls, and use the same syntax as HTML
+                    attributes — prop="value". In React, dataflow is unidirectional: props can only be passed from Parent components down to
+                    Child components; and props are read-only.
+                </p>
+                <p>
+                    Let’s open index.js and give our
+                    "App" call its first prop.
+                </p>
+                <p>
+                    Add a prop of subject to the
+                    "App" component call, with a value of Clarice. When you are done, your code should look something like this:
+                </p>
+
+                <code>
+                    ReactDOM.render(
+                    &lt;App subject="Clarice" /&gt;, document.getElementById('root'));
+                </code>
+                <p>
+                    Back in App.js, let's revisit the App function itself, which reads like this (with the return statement shortened for
+                    brevity):
+                </p>
+                <code>function App() {
+                const subject = "React";
+                return (
+                // return statement
+                );
+                }
+                </code>
+                <p> Change the signature of the App function so that it accepts props as a parameter, and delete the subject const. Just
+                like any other function parameter, you can put props in a console.log() to print it to your browser's console. Go ahead
+                and do that before the return statement, like so:
+            </p>
+            <code>
+                function App(props) {
+                console.log(props);
+                return (
+                // return statement
+                );
+                }
+            </code>
+            <p>
+                Save your file and check your browser's JavaScript console. You should see something like this logged:
+            </p>
+            <code>
+                Object { subject: "Clarice" }
+            </code>
+            <p>
+                The object property subject corresponds to the subject prop we added to our
+                "App" component call, and the string Clarice corresponds to its value. Component props in React are always collected
+                into objects in this fashion.
+            </p>
+            <p>
+                Now that subject is one of our props, let's utilize it in App.js. Change the subject constant so that, instead of
+                defining it as the string React, you are reading the value of props.subject. You can also delete your console.log() if
+                you want.
+            </p>
+            <code>
+                function App(props) {
+                const subject = props.subject;
+                return (
+                // return statement
+                );
+                }
+            </code>
+            <p>
+                When you save, the app should now greet you with "Hello, Clarice!". If you return to index.js, edit the value of
+                subject, and save, your text will change.
+            </p>
+
+        <section class="main-section" id="Summary">
+            <header>Summary</header>
+            <article>
+                <p>
+                    This brings us to the end of our initial look at React, including how to install it locally, creating a starter app, and
+                    how the basics work. In the next article, we'll start building our first proper application — a todo list. Before we do
+                    that, however, let's recap some of the things we’ve learned.
+                    
+                    In React:
+                    <li>Components can import modules they need and must export themselves at the bottom of their files.</li>
+                    <li>Component functions are named with PascalCase.</li>
+                    <li>You can read JSX variables by putting them between curly braces, like {so}.</li>
+                    <li>Props are written just like attributes inside component calls and are passed into components.</li>
+                </p>
+
+                <p>All the documentation in this page is taken from
+                    <a href="https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Client-side_JavaScript_frameworks/React_getting_started"
+                        target="_blank">MDN</a>
+                </p>
+            </article>
+        </section>
+    </main>
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+</body>
+
+</html>
